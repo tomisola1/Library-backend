@@ -4,20 +4,21 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { join } from 'path';
+import { BooksModule } from './books/books.module';
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      autoSchemaFile: 'src/schema.gql',
     }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: ':memory:',
+      database: 'books',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
+    BooksModule,
   ],
   controllers: [AppController],
   providers: [AppService],
