@@ -10,6 +10,7 @@ type Book {
 
 type Query {
   getAllBooks: [Book!]!
+  searchBooks(query: String!): [Book!]!
 }
 
 type Mutation {

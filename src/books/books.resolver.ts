@@ -13,6 +13,13 @@ export class BooksResolver {
     return this.bookService.getAll();
   }
 
+  @Query(() => [Book])
+  searchBooks(@Args('query') query: string): Promise<Book[]> {
+    // Logic for searching books based on the query parameter
+    const books = this.bookService.searchBooks(query);
+    return books;
+  }
+
   @Mutation((returns) => Book)
   createBook(@Args('bookInput') bookInput: BookInput): Promise<Book> {
     return this.bookService.createBook(bookInput);

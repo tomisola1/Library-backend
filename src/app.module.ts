@@ -12,9 +12,10 @@ import { BooksModule } from './books/books.module';
       driver: ApolloDriver,
       autoSchemaFile: 'src/schema.gql',
     }),
+
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: 'books',
+      database: 'data/book.db',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
