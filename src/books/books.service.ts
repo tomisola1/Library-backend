@@ -63,7 +63,7 @@ export class BooksService {
   }
 
   //Delete a book
-  async deleteBook(id: number): Promise<boolean> {
+  async deleteBook(id: number): Promise<Book> {
     try {
       // Retrieve the book object from the database using the ID
       const book = await this.bookRepository.findOneBy({ id });
@@ -74,7 +74,7 @@ export class BooksService {
       //Remove the book object from the database
       await this.bookRepository.remove(book);
 
-      return true;
+      return book;
     } catch (error) {
       console.log(error);
     }

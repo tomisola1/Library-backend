@@ -80,9 +80,9 @@ describe('BooksResolver', () => {
     it('should delete a book', async () => {
       jest
         .spyOn(service, 'deleteBook')
-        .mockImplementation(() => Promise.resolve(true));
+        .mockImplementation(() => Promise.resolve(book));
 
-      expect(await resolver.deleteBook(1)).toBe(true);
+      expect(await resolver.deleteBook(1)).toBe(book);
     });
   });
 });

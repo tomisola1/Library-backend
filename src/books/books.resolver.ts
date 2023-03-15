@@ -34,7 +34,7 @@ export class BooksResolver {
   }
 
   @Mutation((returns) => Book)
-  deleteBook(@Args('id', { type: () => Int }) id: number): Promise<boolean> {
+  deleteBook(@Args('id', { type: () => Int }) id: number): Promise<Book> {
     return this.bookService.deleteBook(id);
   }
 }
