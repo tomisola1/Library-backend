@@ -11,6 +11,7 @@ import { BooksModule } from './books/books.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'src/schema.gql',
+      playground: true,
     }),
 
     TypeOrmModule.forRoot({
