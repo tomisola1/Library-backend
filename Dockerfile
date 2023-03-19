@@ -5,12 +5,12 @@ ENV NODE_ENV build
 USER node
 WORKDIR /home/node
 
-COPY package*.json ./
-RUN npm ci
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
 COPY --chown=node:node . .
-RUN npm run build \
-    && npm prune --production
+RUN yarn build \
+    && yarn install --production --frozen-lockfile --ignore-scripts --prefer-offline
 
 # ---
 
