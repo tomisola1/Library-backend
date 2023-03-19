@@ -71,10 +71,11 @@ export class BooksService {
       if (book === null) {
         throw new NotFoundException(`Book with id ${id} is not available`);
       }
+      const duplicate = { ...book };
       //Remove the book object from the database
       await this.bookRepository.remove(book);
 
-      return book;
+      return duplicate;
     } catch (error) {
       console.log(error);
     }
